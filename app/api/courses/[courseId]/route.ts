@@ -1,6 +1,5 @@
 import { db } from '@/lib/db'
 import { auth } from '@clerk/nextjs'
-import error from 'next/error'
 import { NextResponse } from 'next/server'
 import Mux from '@mux/mux-node'
 
@@ -52,7 +51,7 @@ export async function DELETE(
 
     return NextResponse.json(deletedCourse)
   } catch (err) {
-    console.log('[COURSE_ID_DELETE]', error)
+    console.log('[COURSE_ID_DELETE]', err)
     return new NextResponse('Internal Error', { status: 500 })
   }
 }
@@ -81,8 +80,8 @@ export async function PATCH(
     })
 
     return NextResponse.json(course)
-  } catch (error) {
-    console.log('[COURSE_ID]', error)
+  } catch (err) {
+    console.log('[COURSE_ID]', err)
     return new NextResponse('Internal Error', { status: 500 })
   }
 }
